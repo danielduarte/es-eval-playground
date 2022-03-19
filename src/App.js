@@ -19,7 +19,7 @@ function App() {
   function onChange(code) {
     let evalResult = '';
     try {
-      evalResult = JSON.stringify(esEval(code), null, 2);
+      evalResult = JSON.stringify(esEval(code, null, { timeout: 50 }), null, 2);
     } catch (err) {
       evalResult = err.message;
     }
