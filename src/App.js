@@ -5,6 +5,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-xcode";
 import esEval from  'es-eval';
+import JSON5 from  'json5';
 import './App.css';
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
   function onChange(code) {
     let evalResult = '';
     try {
-      evalResult = JSON.stringify(esEval(code, null, { timeout: 50 }), null, 2);
+      const result = esEval(code, null, { timeout: 50 });
+      evalResult = JSON5.stringify(result, null, 2)
     } catch (err) {
       evalResult = err.message;
     }
@@ -53,7 +55,7 @@ function App() {
             tabSize={2}
             placeholder="Enter a JS/ES expression"
             editorProps={{ $blockScrolling: true }}
-            setOptions={{ useWorker: false, dragEnabled: false }}
+            setOptions={{ useWorker: false, dragEnabled: false, behavioursEnabled: false }}
             onChange={onChange}
           />
         </div>
@@ -68,7 +70,7 @@ function App() {
             height="100%"
             width="100%"
             editorProps={{ $blockScrolling: true }}
-            setOptions={{ useWorker: false, dragEnabled: false }}
+            setOptions={{ useWorker: false, dragEnabled: false, behavioursEnabled: false }}
             readOnly={true}
           />
         </div>
