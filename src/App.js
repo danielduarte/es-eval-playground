@@ -53,7 +53,7 @@ function App() {
             height="100%"
             width="100%"
             tabSize={2}
-            placeholder="Enter a JS/ES expression"
+            placeholder="Enter a JavaScript expression"
             editorProps={{ $blockScrolling: true }}
             setOptions={{ useWorker: false, dragEnabled: false, behavioursEnabled: false }}
             onChange={onChange}
